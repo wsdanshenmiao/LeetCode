@@ -23,3 +23,18 @@ target("TheNumberOfIslands")
     set_kind("binary")
     add_files("TheNumberOfIslands.cpp")
 target_end()
+
+target("RemoveDuplicatesFromSortedList2")
+    set_kind("binary")
+    add_files("RemoveDuplicatesFromSortedList2.cpp")
+target_end()
+
+target("RangeBitwiseAnd")
+    set_kind("binary")
+    add_files("RangeBitwiseAnd.cpp")
+target_end()
+
+target("LongestPalindrome")
+    set_kind("binary")
+    add_files("LongestPalindrome.cpp")
+target_end()
