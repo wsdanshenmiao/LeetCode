@@ -27,40 +27,68 @@
     
     边界条件为 n < 2 时，最长回文子串为 s 本身。
 */
-// 判断字符串是否为回文串
-bool isPalindrome(std::string_view s)
-{
-    if(s.empty())
-		return true;
-    for(auto left = std::begin(s), right = std::prev(std::end(s)); left < right; ++left, --right){
-        if(*left != *right)
-            return false;
-    }
-    return true;
-}
 
-std::string longestPalindrome(std::string s) 
-{
-    if(std::size(s) < 2)
-        return s;
+// // 判断字符串是否为回文串
+// bool isPalindrome(std::string_view s)
+// {
+//     if(s.empty())
+// 		return true;
+//     for(auto left = std::begin(s), right = std::prev(std::end(s)); left < right; ++left, --right){
+//         if(*left != *right)
+//             return false;
+//     }
+//     return true;
+// }
 
-    std::string result{s[0]};
-    for(auto it = std::next(std::begin(s)); it != std::end(s); std::advance(it, 1)){
-        // 查找包含当前字符的最长回文子串
-        for(auto curr_it = std::begin(s); curr_it != it; std::advance(curr_it, 1)){
-            // 判断当前字串是否是回文串
-            if (auto sub_str = std::string_view{curr_it, std::next(it)}; isPalindrome(sub_str)) {
-                // 若当前回文子串长于 result，则更新 result
-                if(std::size(result) - 1 < std::distance(curr_it, it)){
-                    result = sub_str;
-                }
-            }
+// std::string longestPalindrome(std::string s)
+// {
+//     if(std::size(s) < 2)
+//         return s;
+
+//     std::string result{s[0]};
+//     for(auto it = std::next(std::begin(s)); it != std::end(s); std::advance(it, 1)){
+//         // 查找包含当前字符的最长回文子串
+//         for(auto curr_it = std::begin(s); curr_it != it; std::advance(curr_it, 1)){
+//             // 判断当前字串是否是回文串
+//             if (auto sub_str = std::string_view{curr_it, std::next(it)}; isPalindrome(sub_str)) {
+//                 // 若当前回文子串长于 result，则更新 result
+//                 if(std::size(result) - 1 < std::distance(curr_it, it)){
+//                     result = sub_str;
+//                 }
+//             }
+//         }
+//     }
+
+//     return result;
+// }
+
+
+
+std::string longestPalindrome(std::string s)
+{
+    auto max_begin = std::begin(s), max_end = std::begin(s);
+    // 遍历所有元素
+    for(auto it = std::begin(s); it != std::end(s); std::advance(it, 1)){
+        auto left = it, right = it;
+        // 向左查找重复元素构成的回文子串
+        while (left != std::begin(s) && *std::prev(left) == *right) {
+            std::advance(left, -1);
+        }
+
+        // 两边扩展搜索回文子串
+        while(left != std::begin(s) && right != std::prev(std::end(s)) && *std::prev(left) == *std::next(right)){
+            std::advance(left, -1);
+            std::advance(right, 1);
+        }
+
+        if(std::distance(max_begin, max_end) < std::distance(left, std::next(right))){
+            max_begin = left;
+            max_end = std::next(right);
         }
     }
 
-    return result;
+    return std::string{max_begin, max_end};
 }
-
 
 int main()
 {

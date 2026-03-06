@@ -38,3 +38,58 @@ target("LongestPalindrome")
     set_kind("binary")
     add_files("LongestPalindrome.cpp")
 target_end()
+
+target("GroupingOfAnagrammaticLetters")
+    set_kind("binary")
+    add_files("GroupingOfAnagrammaticLetters.cpp")
+target_end()
+
+target("SetMatrixZeroes")
+    set_kind("binary")
+    add_files("SetMatrixZeroes.cpp")
+target_end()
+
+target("PartitionedLinkedList")
+    set_kind("binary")
+    add_files("PartitionedLinkedList.cpp")
+target_end()
+
+target("LRUCache")
+    set_kind("binary")
+    add_files("LRUCache.cpp")
+target_end()
+
+target("ReverseWords")
+    set_kind("binary")
+    add_files("ReverseWords.cpp")
+target_end()
+
+target("SearchInRotatedSortedArray")
+    set_kind("binary")
+    add_files("SearchInRotatedSortedArray.cpp")
+target_end()
+
+target("LongestConsecutive")
+    set_kind("binary")
+    add_files("LongestConsecutive.cpp")
+target_end()
+
+target("KthSmallestElementInABST")
+    set_kind("binary")
+    add_files("KthSmallestElementInABST.cpp")
+target_end()
+
+target("SumRootToLeafNumbers")
+    set_kind("binary")
+    add_files("SumRootToLeafNumbers.cpp")
+target_end()
+
+target("MinimumPathSumInATriangle")
+    set_kind("binary")
+    add_files("MinimumPathSumInATriangle.cpp")
+target_end()
+
+target("SimplifyPath")
+    set_kind("binary")
+    add_files("SimplifyPath.cpp")
+target_end()
