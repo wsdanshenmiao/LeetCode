@@ -93,3 +93,38 @@ target("SimplifyPath")
     set_kind("binary")
     add_files("SimplifyPath.cpp")
 target_end()
+
+target("FindFirstAndLastPositionOfElementInSortedArray")
+    set_kind("binary")
+    add_files("FindFirstAndLastPositionOfElementInSortedArray.cpp")
+target_end()
+
+target("CombinationSum")
+    set_kind("binary")
+    add_files("CombinationSum.cpp")
+target_end()
+
+target("ThreeSum")
+    set_kind("binary")
+    add_files("ThreeSum.cpp")
+target_end()
+
+target("GameOfLife")
+    set_kind("binary")
+    add_files("GameOfLife.cpp")
+target_end()
+
+target("ContainerWithMostWater")
+    set_kind("binary")
+    add_files("ContainerWithMostWater.cpp")
+target_end()
+
+target("LowestCommonAncestorOfABinaryTree")
+    set_kind("binary")
+    add_files("LowestCommonAncestorOfABinaryTree.cpp")
+target_end()
+
+target("KthLargestElementInAnArray")
+    set_kind("binary")
+    add_files("KthLargestElementInAnArray.cpp")
+target_end()
