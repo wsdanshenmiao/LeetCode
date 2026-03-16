@@ -128,3 +128,8 @@ target("KthLargestElementInAnArray")
     set_kind("binary")
     add_files("KthLargestElementInAnArray.cpp")
 target_end()
+
+target("UniquePathsII")
+    set_kind("binary")
+    add_files("UniquePathsII.cpp")
+target_end()
