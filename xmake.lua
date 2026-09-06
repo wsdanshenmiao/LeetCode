@@ -133,3 +133,68 @@ target("UniquePathsII")
     set_kind("binary")
     add_files("UniquePathsII.cpp")
 target_end()
+
+target("BestTimeToBuyAndSellStock")
+    set_kind("binary")
+    add_files("BestTimeToBuyAndSellStock.cpp")
+target_end()
+
+target("SubarraySumEqualsK")
+    set_kind("binary")
+    add_files("SubarraySumEqualsK.cpp")
+target_end()
+
+target("ZigzagConversion")
+    set_kind("binary")
+    add_files("ZigzagConversion.cpp")
+target_end()
+
+target("MinimumPathSum")
+    set_kind("binary")
+    add_files("MinimumPathSum.cpp")
+target_end()
+
+target("ProductOfArrayExceptSelf")
+    set_kind("binary")
+    add_files("ProductOfArrayExceptSelf.cpp")
+target_end()
+
+target("BestTimeToBuyAndSellStockII")
+    set_kind("binary")
+    add_files("BestTimeToBuyAndSellStockII.cpp")
+target_end()
+
+target("ValidateBinarySearchTree")
+    set_kind("binary")
+    add_files("ValidateBinarySearchTree.cpp")
+target_end()
+
+target("N-Queens")
+    set_kind("binary")
+    add_files("N-Queens.cpp")
+target_end()
+
+target("MinimumSizeSubarraySum")
+    set_kind("binary")
+    add_files("MinimumSizeSubarraySum.cpp")
+target_end()
+
+target("CourseScheduleII")
+    set_kind("binary")
+    add_files("CourseScheduleII.cpp")
+target_end()
+
+target("InterleavingString")
+    set_kind("binary")
+    add_files("InterleavingString.cpp")
+target_end()
+
+target("RemoveNthNodeFromEndOfList")
+    set_kind("binary")
+    add_files("RemoveNthNodeFromEndOfList.cpp")
+target_end()
+
+target("RemovingMinimumAndMaximumFromArray")
+    set_kind("binary")
+    add_files("RemovingMinimumAndMaximumFromArray.cpp")
+target_end()
