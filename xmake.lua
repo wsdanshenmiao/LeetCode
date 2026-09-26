@@ -198,3 +198,8 @@ target("RemovingMinimumAndMaximumFromArray")
     set_kind("binary")
     add_files("RemovingMinimumAndMaximumFromArray.cpp")
 target_end()
+
+target("Pow(x, n)")
+    set_kind("binary")
+    add_files("Pow(x, n).cpp")
+target_end()
