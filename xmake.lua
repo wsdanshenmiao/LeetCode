@@ -252,3 +252,13 @@ target("IPO")
     set_kind("binary")
     add_files("IPO.cpp")
 target_end()
+
+target("FindMedianFromDataStream")
+    set_kind("binary")
+    add_files("FindMedianFromDataStream.cpp")
+target_end()
+
+target("LetterCombinationsOfAPhoneNumber")
+    set_kind("binary")
+    add_files("LetterCombinationsOfAPhoneNumber.cpp")
+target_end()

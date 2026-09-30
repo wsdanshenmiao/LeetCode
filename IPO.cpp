@@ -32,13 +32,110 @@
 */
 
 #include <vector>
+#include <ranges>
+#include <print>
+#include <queue>
+#include <numeric>
+#include <algorithm>
 
-int findMaximizedCapital(int k, int w, std::vector<int>& profits, std::vector<int>& capital) {
-    
+template<std::size_t Version = 0>
+int findMaximizedCapital(int k, int w, std::vector<int>& profits, std::vector<int>& capital);
+
+template<>
+int findMaximizedCapital<0>(int k, int w, std::vector<int>& profits, std::vector<int>& capital) {
+    for(std::size_t i = 0; i < k; ++i){
+        int maxProfit = 0;
+        std::size_t maxProfitIndex = -1;
+        // 查找最小资本小于 w 的最大利润的项目
+        for(const auto& [index, c] : capital | std::views::enumerate){
+            if(c <= w && profits[index] > maxProfit){
+                maxProfit = profits[index];
+                maxProfitIndex = index;
+            }
+        }
+        if(maxProfitIndex != -1){
+            w += maxProfit;
+            profits.erase(std::next(std::begin(profits), maxProfitIndex));
+            capital.erase(std::next(std::begin(capital), maxProfitIndex));
+            maxProfit = 0;
+            maxProfitIndex = -1;
+        }
+        else{
+            break;
+        }
+    }
+
+    return w;
+}
+
+template<>
+int findMaximizedCapital<1>(int k, int w, std::vector<int>& profits, std::vector<int>& capital) {
+    // 使用优先队列优化
+    using PairType = std::pair<int, int>;
+    auto cmp = [](const PairType& a, const PairType& b) { return a.first < b.first; };
+    std::priority_queue<PairType, std::vector<PairType>, decltype(cmp)> maxHeap{};
+    std::vector<std::size_t> indices(std::size(profits));
+    std::ranges::iota(indices, 0);
+    for(std::size_t i = 0; i < k; ++i){
+        // 将所有可行的项目加入优先队列
+        for(auto it = std::begin(indices); it != std::end(indices);){
+            if(capital[*it] <= w){
+                maxHeap.emplace(profits[*it], static_cast<int>(*it));
+                it = indices.erase(it);
+            } else {
+                ++it;
+            }
+        }
+
+        // 选择利润最大的项目
+        if(!maxHeap.empty()){
+            w += maxHeap.top().first;
+            maxHeap.pop();
+        }
+        else{
+            break;
+        }
+    }
+
+    return w;
+}
+
+template<>
+int findMaximizedCapital<2>(int k, int w, std::vector<int>& profits, std::vector<int>& capital) {
+    std::priority_queue<int> maxHeap{};
+    std::vector<std::size_t> indices(std::size(profits));
+
+    std::ranges::iota(indices, 0);
+    // 按照最小资本进行排序
+    std::ranges::sort(indices, [&capital](std::size_t a, std::size_t b) { return capital[a] < capital[b]; });
+
+    std::size_t index = 0;
+    for(std::size_t i = 0; i < k; ++i){
+        // 将所有可行的项目加入优先队列
+        while (index < capital.size() && capital[indices[index]] <= w) {
+            maxHeap.push(profits[indices[index]]);
+            ++index;
+        }
+
+        if(maxHeap.empty())
+            break;
+
+        // 选择利润最大的项目
+        w += maxHeap.top();
+        maxHeap.pop();
+    }
+
+    return w;
 }
 
 int main()
 {
-    
+    constexpr std::size_t version = 2;
+    std::vector<int> profits = {1, 2, 3};
+    std::vector<int> capital = {0, 1, 1};
+    std::println("{}", findMaximizedCapital<version>(2, 0, profits, capital));
+    std::vector<int> profits2 = {1, 2, 3};
+    std::vector<int> capital2 = {0, 1, 2};
+    std::println("{}", findMaximizedCapital<version>(3, 0, profits2, capital2));
     return 0;
 }
