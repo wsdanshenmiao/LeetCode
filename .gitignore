@@ -5,6 +5,7 @@
 .xmake
 bin/
 vsxmake2022/
+vsxmake2026/
 build/
 
 # generated compilation database (consumed by cpptools / clangd)
