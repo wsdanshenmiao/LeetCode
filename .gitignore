@@ -7,6 +7,9 @@ bin/
 vsxmake2022/
 build/
 
+# generated compilation database (consumed by cpptools / clangd)
+compile_commands.json
+
 # Prerequisites
 *.d
 
