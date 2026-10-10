@@ -203,12 +203,12 @@ target("Pow(x, n)")
     set_kind("binary")
     add_files("Pow(x, n).cpp")
 target_end()
-<<<<<<< HEAD
 
 target("BinarySearchTreeIterator")
     set_kind("binary")
     add_files("BinarySearchTreeIterator.cpp")
-=======
+target_end()
+
 target("H-Index")
     set_kind("binary")
     add_files("H-Index.cpp")
@@ -267,5 +267,14 @@ target_end()
 target("LetterCombinationsOfAPhoneNumber")
     set_kind("binary")
     add_files("LetterCombinationsOfAPhoneNumber.cpp")
->>>>>>> 2096de6fa31bd335acdc28d50afa05da0f68b91e
+target_end()
+
+target("LongestSubstringWithoutRepeatingCharacters")
+    set_kind("binary")
+    add_files("LongestSubstringWithoutRepeatingCharacters.cpp")
+target_end()
+
+target("InsertInterval")
+    set_kind("binary")
+    add_files("InsertInterval.cpp")
 target_end()
