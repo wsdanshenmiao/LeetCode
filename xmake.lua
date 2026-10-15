@@ -278,3 +278,18 @@ target("InsertInterval")
     set_kind("binary")
     add_files("InsertInterval.cpp")
 target_end()
+
+target("SearchA2DMatrix")
+    set_kind("binary")
+    add_files("SearchA2DMatrix.cpp")
+target_end()
+
+target("FindMinimumInRotatedSortedArray")
+    set_kind("binary")
+    add_files("FindMinimumInRotatedSortedArray.cpp")
+target_end()
+
+target("NimGame")
+    set_kind("binary")
+    add_files("NimGame.cpp")
+target_end()
