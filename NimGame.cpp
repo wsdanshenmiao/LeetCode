@@ -28,35 +28,11 @@
     1 <= n <= 231 - 1
 */
 
-#include <unordered_map>
 #include <print>
 
 bool canWinNim(int n)
 {
-    std::unordered_map<int, bool> table{};
-    auto func = [&table](this auto&& self, int n, bool isSelf){
-        if(n <= 3)
-            return isSelf;
-
-        if(table.contains(n))
-            return table[n];
-
-        auto result = [&table, n](bool val){
-            table[n] = val;
-            return val;
-        };
-
-        for(int i = 1; i <= 3; ++i){
-            auto canSelfWin = self(n - i, !isSelf);
-            if(isSelf && canSelfWin)
-                return result(true);
-            else if(!isSelf && !canSelfWin)
-                return result(false);
-        }
-        return result(!isSelf);
-    };
-
-    return func(n, true);
+    return n % 4 != 0;
 }
 
 int main()

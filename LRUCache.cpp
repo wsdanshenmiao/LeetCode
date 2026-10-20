@@ -42,30 +42,35 @@ public:
     
     int get(int key) 
     {
-        if(m_Cache.find(key) == std::end(m_Cache)){
+        if(auto it = m_Cache.find(key); it != std::end(m_Cache)){
+            // 将访问的节点移动到链表头部
+            m_List.splice(m_List.begin(), m_List, it->second);
+            return m_List.front().second;
+        }
+        else{
             return -1;
         }
-        // 将访问的节点移动到链表头部
-        m_List.splice(m_List.begin(), m_List, m_Cache[key]);
-        return m_List.front().second;
     }
     
     void put(int key, int value) 
     {
-        if(m_Cache.find(key) != std::end(m_Cache)){
+        if(auto it = m_Cache.find(key); it != std::end(m_Cache)){
             // 移动到链表头部，由于迭代器不会失效所以无需更新迭代器
-            m_List.splice(m_List.begin(), m_List, m_Cache[key]);
+            m_List.splice(m_List.begin(), m_List, it->second);
             m_List.front().second = value;
         }
         else{
             if(std::size(m_Cache) >= m_Capacity){
                 // 删除最末端的节点
                 m_Cache.erase(m_List.back().first);
-                m_List.pop_back();
+                m_List.splice(m_List.begin(), m_List, std::prev(m_List.end()));
+                m_List.front() = {key, value};
             }
-            // 从头部插入新节点
-            m_List.emplace_front(key, value);
-            m_Cache.insert({key, m_List.begin()});
+            else{
+                // 从头部插入新节点
+                m_List.emplace_front(key, value);
+            }
+            m_Cache[key] = m_List.begin();
         }
     }
 

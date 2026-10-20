@@ -293,3 +293,23 @@ target("NimGame")
     set_kind("binary")
     add_files("NimGame.cpp")
 target_end()
+
+target("LetHimGoCultivateImmortality")
+    set_kind("binary")
+    add_files("LetHimGoCultivateImmortality.cpp")
+target_end()
+
+target("ConstructBinaryTreeFromPreorderAndInorderTraversal")
+    set_kind("binary")
+    add_files("ConstructBinaryTreeFromPreorderAndInorderTraversal.cpp")
+target_end()
+
+target("CopyListWithRandomPointer")
+    set_kind("binary")
+    add_files("CopyListWithRandomPointer.cpp")
+target_end()
+
+target("SingleNumber")
+    set_kind("binary")
+    add_files("SingleNumber.cpp")
+target_end()
