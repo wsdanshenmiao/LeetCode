@@ -313,3 +313,8 @@ target("SingleNumber")
     set_kind("binary")
     add_files("SingleNumber.cpp")
 target_end()
+
+target("SortList")
+    set_kind("binary")
+    add_files("SortList.cpp")
+target_end()
