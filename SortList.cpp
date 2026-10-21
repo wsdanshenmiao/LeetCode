@@ -23,6 +23,7 @@
 
 #include <print>
 #include <string>
+#include  <random>
 
 // Definition for singly-linked list.
 struct ListNode
@@ -67,7 +68,9 @@ ListNode* quickSort(ListNode* head)
         std::size_t size{};
     };
 
-    auto sortHelper = [](this auto&& self, List list){
+    std::mt19937 rng(std::random_device{}());
+
+    auto sortHelper = [&rng](this auto&& self, List list){
         if(list.head == nullptr || list.head->next == nullptr)
             return list;
         
@@ -93,8 +96,15 @@ ListNode* quickSort(ListNode* head)
 
         List less{}, equal{}, greater{};
 
+        // 随机选择一个节点作为基准值
+        std::uniform_int_distribution<std::size_t> dist(0, list.size - 1);
+        std::size_t pivotIndex = dist(rng);
+        ListNode* pivotNode = list.head;
+        for(std::size_t i = 0; i < pivotIndex && pivotNode->next != nullptr; ++i){
+            pivotNode = pivotNode->next;
+        }
+        int pivot = pivotNode->val;
         ListNode* curr = list.head;
-        int pivot = list.head->val;
         while(curr != nullptr){
             ListNode* next = curr->next;
             if(curr->val < pivot){
@@ -117,6 +127,7 @@ ListNode* quickSort(ListNode* head)
         greater = self(greater);
 
         // 合并小序列、相等序列和大序列
+        list  = {};
         insertList(list, less, false);
         insertList(list, equal, false);
         insertList(list, greater, false);
@@ -136,6 +147,53 @@ ListNode* quickSort(ListNode* head)
 
 ListNode* mergeSort(ListNode* head)
 {
+    if(head == nullptr || head->next == nullptr)
+        return head;
+    
+    ListNode* slow = head;
+    ListNode* fast = head->next;
+    while(slow != nullptr && fast != nullptr && fast->next != nullptr){
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    // 按照中点分割链表
+    auto mid = slow->next;
+    slow->next = nullptr;
+    ListNode* left = mergeSort(head);
+    ListNode* right = mergeSort(mid);
+    
+    // 合并两部分的有序链表
+    head = nullptr;
+    ListNode* tail = nullptr;
+    auto insertNode = [&head, &tail](ListNode* node){
+        if(head == nullptr){
+            head = node;
+            tail = node;
+        }
+        else{
+            tail->next = node;
+            tail = node;
+        }
+        auto next = node->next;
+        node->next = nullptr;
+        return next;
+    };
+    while(left != nullptr && right != nullptr){
+        if(left->val < right->val){
+            left = insertNode(left);
+        }
+        else{
+            right = insertNode(right);
+        }
+    }
+    while(left != nullptr){
+        left = insertNode(left);
+    }
+    while(right != nullptr){
+        right = insertNode(right);
+    }
+
     return head;
 }
 
@@ -155,12 +213,13 @@ ListNode* sortList(ListNode* head)
 
 int main()
 {
+    constexpr SortType sortType = SortType::MergeSort;
     ListNode* head = new ListNode(4);
     head->next = new ListNode(2);
     head->next->next = new ListNode(1);
     head->next->next->next = new ListNode(3);
 
-    head = sortList<SortType::QuickSort>(head);
+    head = sortList<sortType>(head);
 
     std::println("Sorted list: {}", *head);
 
