@@ -318,3 +318,8 @@ target("SortList")
     set_kind("binary")
     add_files("SortList.cpp")
 target_end()
+
+target("MergeTwoSortedLists")
+    set_kind("binary")
+    add_files("MergeTwoSortedLists.cpp")
+target_end()
