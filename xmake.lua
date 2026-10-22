@@ -323,3 +323,13 @@ target("MergeTwoSortedLists")
     set_kind("binary")
     add_files("MergeTwoSortedLists.cpp")
 target_end()
+
+target("LengthOfLastWord")
+    set_kind("binary")
+    add_files("LengthOfLastWord.cpp")
+target_end()
+
+target("SearchInsertPositionv")
+    set_kind("binary")
+    add_files("SearchInsertPositionv.cpp")
+target_end()

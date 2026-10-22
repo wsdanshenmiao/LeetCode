@@ -20,8 +20,6 @@
     l1 和 l2 均按 非递减顺序 排列
 */
 
-#include <stack>
-
 // Definition for singly-linked list.
 struct ListNode {
     int val;
