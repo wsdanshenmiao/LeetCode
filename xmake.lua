@@ -333,3 +333,8 @@ target("SearchInsertPositionv")
     set_kind("binary")
     add_files("SearchInsertPositionv.cpp")
 target_end()
+
+target("MaxPointsOnALine")
+    set_kind("binary")
+    add_files("MaxPointsOnALine.cpp")
+target_end()
