@@ -338,3 +338,13 @@ target("MaxPointsOnALine")
     set_kind("binary")
     add_files("MaxPointsOnALine.cpp")
 target_end()
+
+ target("MaximumSubarray")
+    set_kind("binary")
+    add_files("MaximumSubarray.cpp")
+target_end()
+
+target("ReverseLinkedListII")
+    set_kind("binary")
+    add_files("ReverseLinkedListII.cpp")
+target_end();
