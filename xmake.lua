@@ -348,3 +348,43 @@ target("ReverseLinkedListII")
     set_kind("binary")
     add_files("ReverseLinkedListII.cpp")
 target_end();
+
+target("MaximalSquare")
+    set_kind("binary")
+    add_files("MaximalSquare.cpp")
+target_end()
+
+target("BinaryTreeLevelOrderTraversal")
+    set_kind("binary")
+    add_files("BinaryTreeLevelOrderTraversal.cpp")
+target_end()
+
+target("SurroundedRegions")
+    set_kind("binary")
+    add_files("SurroundedRegions.cpp")
+target_end()
+
+target("CountCompleteTreeNodes")
+    set_kind("binary")
+    add_files("CountCompleteTreeNodes.cpp")
+target_end()
+
+target("InsertDeleteGetRandomO(1)")
+    set_kind("binary")
+    add_files("InsertDeleteGetRandomO(1).cpp")
+target_end()
+
+target("WordBreak")
+    set_kind("binary")
+    add_files("WordBreak.cpp")
+target_end()
+
+target("PermutationInString")
+    set_kind("binary")
+    add_files("PermutationInString.cpp")
+target_end()
+
+target("WordPattern")
+    set_kind("binary")
+    add_files("WordPattern.cpp")
+target_end()
