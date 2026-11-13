@@ -16,40 +16,40 @@
 #include <vector>
 #include <unordered_map>
 
-int singleNumber(std::vector<int>& nums) 
-{
-    // 使用哈希表有 O(n) 的空间复杂度
-    std::unordered_map<int, int> count;
-    for(const int& num : nums){
-        ++count[num];
-    }
-    for(const auto& pair : count){
-        if(pair.second == 1){
-            return pair.first;
-        }
-    }
-    return 0;
-}
+// int singleNumber(std::vector<int>& nums) 
+// {
+//     // 使用哈希表有 O(n) 的空间复杂度
+//     std::unordered_map<int, int> count;
+//     for(const int& num : nums){
+//         ++count[num];
+//     }
+//     for(const auto& pair : count){
+//         if(pair.second == 1){
+//             return pair.first;
+//         }
+//     }
+//     return 0;
+// }
 
 
-int singleNumber(std::vector<int>& nums) 
-{
-    int result = 0;
-    // 计算每一个位
-    for(int i = 0; i < 32; ++i){
-        // 统计第 i 位上 1 的个数
-        int count = 0;
-        for(const int& num : nums){
-            count += (num >> i) & 1;
-        }
-        // 由于除了一个元素外，其余元素都出现了三次，所以排除独立的元素，其他元素该位上 1 的个数一定是 3 的倍数
-        // 因此 count % 3 的结果就取决于独立的元素该位上是 0 还是 1
-        if(count % 3 != 0){
-            result |= (1 << i);
-        }
-    }
-    return result;
-}
+// int singleNumber(std::vector<int>& nums) 
+// {
+//     int result = 0;
+//     // 计算每一个位
+//     for(int i = 0; i < 32; ++i){
+//         // 统计第 i 位上 1 的个数
+//         int count = 0;
+//         for(const int& num : nums){
+//             count += (num >> i) & 1;
+//         }
+//         // 由于除了一个元素外，其余元素都出现了三次，所以排除独立的元素，其他元素该位上 1 的个数一定是 3 的倍数
+//         // 因此 count % 3 的结果就取决于独立的元素该位上是 0 还是 1
+//         if(count % 3 != 0){
+//             result |= (1 << i);
+//         }
+//     }
+//     return result;
+// }
 
 int singleNumber(std::vector<int>& nums) 
 {

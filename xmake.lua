@@ -388,3 +388,23 @@ target("WordPattern")
     set_kind("binary")
     add_files("WordPattern.cpp")
 target_end()
+
+target("NextGreaterElementIII")
+    set_kind("binary")
+    add_files("NextGreaterElementIII.cpp")
+target_end()
+
+target("FindTwoNonOverlappingSubArraysEachWithTargetSum")
+    set_kind("binary")
+    add_files("FindTwoNonOverlappingSubArraysEachWithTargetSum.cpp")
+target_end()
+
+target("ImplementTrie")
+    set_kind("binary")
+    add_files("ImplementTrie.cpp")
+target_end()
+
+target("LongestUnivaluePath")
+    set_kind("binary")
+    add_files("LongestUnivaluePath.cpp")
+target_end()
